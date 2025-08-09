@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:smith/screens/target_setting_screen.dart';
+import 'package:smith/screens/device_connection_screen.dart';
 import 'package:smith/theme/matrix_theme.dart';
 import 'package:smith/widgets/digital_rain_animation.dart';
 import 'package:smith/widgets/matrix_button.dart';
 
-class PrerequisitesScreen extends StatefulWidget {
-  const PrerequisitesScreen({super.key});
+class TargetSettingScreen extends StatefulWidget {
+  const TargetSettingScreen({super.key});
 
   @override
-  State<PrerequisitesScreen> createState() => _PrerequisitesScreenState();
+  State<TargetSettingScreen> createState() => _TargetSettingScreenState();
 }
 
-class _PrerequisitesScreenState extends State<PrerequisitesScreen>
+class _TargetSettingScreenState extends State<TargetSettingScreen>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
@@ -70,7 +70,7 @@ class _PrerequisitesScreenState extends State<PrerequisitesScreen>
                             border: Border.all(color: MatrixTheme.matrixGreen),
                           ),
                           child: const Text(
-                            'Step 1 of 6',
+                            'Step 2 of 6',
                             style: MatrixTheme.matrixText,
                           ),
                         ),
@@ -90,7 +90,7 @@ class _PrerequisitesScreenState extends State<PrerequisitesScreen>
                           children: [
                             // Title
                             const Text(
-                              'PREREQUISITES',
+                              'SETTING UP THE TARGET',
                               style: MatrixTheme.matrixHeading,
                             ),
                             
@@ -98,27 +98,13 @@ class _PrerequisitesScreenState extends State<PrerequisitesScreen>
                             
                             // Supported devices section
                             const Text(
-                              'WHAT DEVICES ARE SUPPORTED BY SLATE OS:',
+                              'Starting Slate OS ROM Flash',
                               style: TextStyle(
                                 color: MatrixTheme.matrixGreen,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Matrix',
                               ),
-                            ),
-                            
-                            const SizedBox(height: 16),
-                            
-                            const Text(
-                              'Pixel 7a, Pixel 8, Pixel 8a, Pixel 8pro, Pixel 9a',
-                              style: MatrixTheme.matrixText,
-                            ),
-                            
-                            const SizedBox(height: 24),
-                            
-                            const Text(
-                              'You can Flash a new SlateOS Phone from the following devices and systems:',
-                              style: MatrixTheme.matrixText,
                             ),
                             
                             const SizedBox(height: 16),
@@ -131,23 +117,15 @@ class _PrerequisitesScreenState extends State<PrerequisitesScreen>
                                   children: [
                                     _buildInstallationMethod(
                                       '1.',
-                                      'SlateOS - Via Vanadium Browser',
+                                      'Set the target device up in OEM unlock mode',
                                     ),
                                     _buildInstallationMethod(
                                       '2.',
-                                      'GrapheneOS - Via Vanadium',
+                                      'Go to Settings >> Developer Options >> and turn ON the option ‘OEM Unlocking’',
                                     ),
                                     _buildInstallationMethod(
                                       '3.',
-                                      'Stock Android - Via Chrome Browser',
-                                    ),
-                                    _buildInstallationMethod(
-                                      '4.',
-                                      'Mac PC - Via Chrome Browser (NON INCOGNITO MODE)',
-                                    ),
-                                    _buildInstallationMethod(
-                                      '5.',
-                                      'Windows PC - Via Chrome Browser (NON INCOGNITO MODE)',
+                                      'Once setting toggled on, Power Off the phone',
                                     ),
                                     
                                   ],
@@ -165,7 +143,7 @@ class _PrerequisitesScreenState extends State<PrerequisitesScreen>
                                 onPressed: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => const TargetSettingScreen(),
+                                      builder: (context) => const DeviceConnectionScreen(),
                                     ),
                                   );
                                 },
