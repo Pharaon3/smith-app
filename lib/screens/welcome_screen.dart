@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smith/screens/device_connection_screen.dart';
+import 'package:smith/screens/prerequisites_screen.dart';
 import 'package:smith/theme/matrix_theme.dart';
 import 'package:smith/widgets/digital_rain_animation.dart';
 import 'package:smith/widgets/matrix_button.dart';
@@ -124,10 +124,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       MatrixButton(
                         text: 'START FLASHING',
                         onPressed: () {
-                          print("hello");
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const DeviceConnectionScreen(),
+                              builder: (context) => const PrerequisitesScreen(),
                             ),
                           );
                         },
