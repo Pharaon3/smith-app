@@ -58,7 +58,32 @@ class _PrerequisitesScreenState extends State<PrerequisitesScreen>
                   children: [
                     // Header
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        InkWell(
+                          onTap: () => Navigator.of(context).pop(),
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: MatrixTheme.matrixDarkGray,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: MatrixTheme.matrixGreen,
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.arrow_back,
+                              color: MatrixTheme.matrixGreen,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+
+                        // Step number in the center
                         Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -72,6 +97,37 @@ class _PrerequisitesScreenState extends State<PrerequisitesScreen>
                           child: const Text(
                             'Step 1 of 6',
                             style: MatrixTheme.matrixText,
+                          ),
+                        ),
+
+                        // Next button (styled like the step container)
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => const TargetSettingScreen(),
+                              ),
+                            );
+                          },
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: MatrixTheme.matrixDarkGray,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: MatrixTheme.matrixGreen,
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.arrow_forward,
+                              color: MatrixTheme.matrixGreen,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ],

@@ -23,13 +23,9 @@ class _TargetSettingScreenState extends State<TargetSettingScreen>
       duration: const Duration(milliseconds: 800),
       vsync: this,
     );
-    _fadeAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeIn,
-    ));
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
+    );
     _animationController.forward();
   }
 
@@ -47,7 +43,7 @@ class _TargetSettingScreenState extends State<TargetSettingScreen>
         children: [
           // Digital rain background
           const DigitalRainAnimation(),
-          
+
           // Content
           SafeArea(
             child: FadeTransition(
@@ -56,9 +52,33 @@ class _TargetSettingScreenState extends State<TargetSettingScreen>
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
                   children: [
-                    // Header
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        InkWell(
+                          onTap: () => Navigator.of(context).pop(),
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: MatrixTheme.matrixDarkGray,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: MatrixTheme.matrixGreen,
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.arrow_back,
+                              color: MatrixTheme.matrixGreen,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+
+                        // Step number in the center
                         Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -74,11 +94,42 @@ class _TargetSettingScreenState extends State<TargetSettingScreen>
                             style: MatrixTheme.matrixText,
                           ),
                         ),
+
+                        // Next button (styled like the step container)
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => const DeviceConnectionScreen(),
+                              ),
+                            );
+                          },
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: MatrixTheme.matrixDarkGray,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: MatrixTheme.matrixGreen,
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.arrow_forward,
+                              color: MatrixTheme.matrixGreen,
+                              size: 20,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                    
+
                     const SizedBox(height: 32),
-                    
+
                     // Main content
                     Expanded(
                       child: Container(
@@ -93,9 +144,9 @@ class _TargetSettingScreenState extends State<TargetSettingScreen>
                               'SETTING UP THE TARGET',
                               style: MatrixTheme.matrixHeading,
                             ),
-                            
+
                             const SizedBox(height: 32),
-                            
+
                             // Supported devices section
                             const Text(
                               'Starting Slate OS ROM Flash',
@@ -106,9 +157,9 @@ class _TargetSettingScreenState extends State<TargetSettingScreen>
                                 fontFamily: 'Matrix',
                               ),
                             ),
-                            
+
                             const SizedBox(height: 16),
-                            
+
                             // Installation methods
                             Expanded(
                               child: SingleChildScrollView(
@@ -127,14 +178,13 @@ class _TargetSettingScreenState extends State<TargetSettingScreen>
                                       '3.',
                                       'Once setting toggled on, Power Off the phone',
                                     ),
-                                    
                                   ],
                                 ),
                               ),
                             ),
-                            
+
                             const SizedBox(height: 32),
-                            
+
                             // Next button
                             Align(
                               alignment: Alignment.centerRight,
@@ -143,7 +193,9 @@ class _TargetSettingScreenState extends State<TargetSettingScreen>
                                 onPressed: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => const DeviceConnectionScreen(),
+                                      builder:
+                                          (context) =>
+                                              const DeviceConnectionScreen(),
                                     ),
                                   );
                                 },
@@ -179,12 +231,7 @@ class _TargetSettingScreenState extends State<TargetSettingScreen>
             ),
           ),
           const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              text,
-              style: MatrixTheme.matrixText,
-            ),
-          ),
+          Expanded(child: Text(text, style: MatrixTheme.matrixText)),
         ],
       ),
     );
